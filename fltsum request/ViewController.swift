@@ -9,17 +9,33 @@
 import UIKit
 import MessageUI
 
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 5
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return pickerData[row]
     }
 
     @IBOutlet weak var pickedRequest: UIPickerView!
     
-        sendEmail()
-      
+    var pickerData: [String] = ["Fltsum", "Crew", "EDCT", "Loads", "Times"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        //Connect to the delagates added above viewsourcedtata picker view delegate
+        pickedRequest.delegate = self
+        pickedRequest.dataSource = self
+    }
+    
+    // sendEmail()
+    
     
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
