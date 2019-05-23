@@ -11,6 +11,8 @@ import MessageUI
 
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var subjectField : String = ""
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -34,6 +36,27 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         pickedRequest.dataSource = self
     }
     
+    @IBAction func sendButtonPressed(_ sender: UIButton) {
+        var selectedRequest = pickedRequest.selectedRow(inComponent: 0)
+        
+        if selectedRequest == 0 {
+            var subjectField = "Fltsum "
+            //print (subjectField)
+        } else if selectedRequest == 1{
+            var subjectField = "Crew "
+            //print (selectedRequest)
+            //print ("selected subj field is \(subjectField)")
+        } else if selectedRequest == 2 {
+            var subjectField = "EDCT "
+            //print (subjectField)
+        } else if selectedRequest == 3 {
+            var subjectField = "Loads "
+            //print (subjectField)
+        } else if selectedRequest == 4 {
+            var subjectField = "Times "
+            //print (subjectField)
+        }
+        print ("now we just have to send mail")
     // sendEmail()
     
     
@@ -42,7 +65,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["areq@jetblue.com"])
-            mail.setSubject("fltsum ")
+            mail.setSubject("\(subjectField)")
             mail.setPreferredSendingEmailAddress("Kenneth.Petschauer@jetblue.com")
             
             present(mail, animated: true)
@@ -55,10 +78,9 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         controller.dismiss(animated: true, completion: nil)
-        
-    }
+        }
     
     }
 
-
+}
 
