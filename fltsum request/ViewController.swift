@@ -66,7 +66,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         print ("now we just have to send mail")
         print (selectedFlightNumber)
         
-        // sendEmail()
+        sendEmail()
     }
     
     func sendEmail() {
@@ -82,8 +82,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         } else {
             //show failure alert
         }
-            
-        }
+    }
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         controller.dismiss(animated: true, completion: nil)
