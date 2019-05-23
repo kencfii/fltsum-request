@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
     
     var subjectField : String = ""
     
@@ -34,7 +34,12 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         //Connect to the delagates added above viewsourcedtata picker view delegate
         pickedRequest.delegate = self
         pickedRequest.dataSource = self
+        enteredFlightNumber.delegate = self
     }
+    
+    @IBOutlet weak var enteredFlightNumber: UITextField!
+    
+    
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         var selectedRequest = pickedRequest.selectedRow(inComponent: 0)
@@ -56,9 +61,13 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
             var subjectField = "Times "
             //print (subjectField)
         }
+    var selectedFlightNumber : String = enteredFlightNumber.text!
+        
         print ("now we just have to send mail")
-    // sendEmail()
-    
+        print (selectedFlightNumber)
+        
+        // sendEmail()
+    }
     
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
@@ -82,5 +91,5 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
     
     }
 
-}
+
 

@@ -33,6 +33,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="enteredFlightNumber:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="npa-S1-9kN"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Eq-kv-ewe">
                                 <rect key="frame" x="184" y="407" width="46" height="30"/>
@@ -47,6 +50,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="enteredFlightNumber" destination="biy-kG-SlJ" id="JWO-NI-Rbe"/>
                         <outlet property="pickedRequest" destination="efi-Rt-tqO" id="DqI-XA-XMK"/>
                     </connections>
                 </viewController>
