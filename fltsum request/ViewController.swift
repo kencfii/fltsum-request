@@ -16,9 +16,10 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func sendEmail(_ sender: Any) {
+    @IBOutlet weak var pickedRequest: UIPickerView!
+    
         sendEmail()
-        }
+      
     
     func sendEmail() {
         if MFMailComposeViewController.canSendMail() {
