@@ -13,6 +13,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
     
     var subjectField : String = ""
     
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -42,39 +43,45 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
     
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-        var selectedRequest = pickedRequest.selectedRow(inComponent: 0)
+        
+        let selectedRequest = pickedRequest.selectedRow(inComponent: 0)
+        let selectedFlightNumber : String = ""
         
         if selectedRequest == 0 {
-            var subjectField = "Fltsum "
+            subjectField = "Fltsum "
             //print (subjectField)
         } else if selectedRequest == 1{
-            var subjectField = "Crew "
+            subjectField = "Crew "
             //print (selectedRequest)
             //print ("selected subj field is \(subjectField)")
         } else if selectedRequest == 2 {
-            var subjectField = "EDCT "
+            subjectField = "EDCT "
             //print (subjectField)
         } else if selectedRequest == 3 {
-            var subjectField = "Loads "
+            subjectField = "Loads "
             //print (subjectField)
         } else if selectedRequest == 4 {
-            var subjectField = "Times "
+            subjectField = "Times "
             //print (subjectField)
         }
-    var selectedFlightNumber : String = enteredFlightNumber.text!
+    
+        let selectedFlightNumber : String = enteredFlightNumber.text!
         
-        print ("now we just have to send mail")
+        //print ("now we just have to send mail")
         print (selectedFlightNumber)
+        //print (subjectField)
         
         sendEmail()
     }
     
     func sendEmail() {
+        
+        print (selectedFlightNumber)
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["areq@jetblue.com"])
-            mail.setSubject("\(subjectField)")
+            mail.setSubject("\(subjectField) \(selectedFlightNumber)")
             mail.setPreferredSendingEmailAddress("Kenneth.Petschauer@jetblue.com")
             
             present(mail, animated: true)
