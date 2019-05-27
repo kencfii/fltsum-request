@@ -9,6 +9,8 @@
 import UIKit
 import MessageUI
 
+var selectedFlightNumber : String = ""
+
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
     
     var subjectField : String = ""
@@ -45,33 +47,32 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         
         let selectedRequest = pickedRequest.selectedRow(inComponent: 0)
-        let selectedFlightNumber : String = ""
+        var selectedFlightNumber : String
         
         if selectedRequest == 0 {
             subjectField = "Fltsum "
-            //print (subjectField)
+            print (subjectField)
         } else if selectedRequest == 1{
             subjectField = "Crew "
-            //print (selectedRequest)
-            //print ("selected subj field is \(subjectField)")
+            print (subjectField)
         } else if selectedRequest == 2 {
             subjectField = "EDCT "
-            //print (subjectField)
+            print (subjectField)
         } else if selectedRequest == 3 {
             subjectField = "Loads "
-            //print (subjectField)
+            print (subjectField)
         } else if selectedRequest == 4 {
             subjectField = "Times "
-            //print (subjectField)
+            print (subjectField)
         }
     
-        let selectedFlightNumber : String = enteredFlightNumber.text!
+        selectedFlightNumber = enteredFlightNumber.text!
         
-        //print ("now we just have to send mail")
+        print ("now we just have to send mail")
         print (selectedFlightNumber)
-        //print (subjectField)
+        print (subjectField)
         
-        sendEmail()
+        //sendEmail()
     }
     
     func sendEmail() {
