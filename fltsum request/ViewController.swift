@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-var selectedFlightNumber : String = ""
+//var selectedFlightNumber : String = ""
 
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
     
@@ -47,7 +47,7 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         
         let selectedRequest = pickedRequest.selectedRow(inComponent: 0)
-        var selectedFlightNumber : String
+        //var selectedFlightNumber : String
         
         if selectedRequest == 0 {
             subjectField = "Fltsum "
@@ -66,23 +66,23 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
             print (subjectField)
         }
     
-        selectedFlightNumber = enteredFlightNumber.text!
+        // selectedFlightNumber = enteredFlightNumber.text!
         
-        print ("now we just have to send mail")
-        print (selectedFlightNumber)
-        print (subjectField)
+        //print ("now we just have to send mail")
+        //print (selectedFlightNumber)
+        //print (subjectField)
         
-        //sendEmail()
+        sendEmail()
     }
     
     func sendEmail() {
         
-        print (selectedFlightNumber)
+        //print (selectedFlightNumber)
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients(["areq@jetblue.com"])
-            mail.setSubject("\(subjectField) \(selectedFlightNumber)")
+            mail.setSubject("\(subjectField)\(enteredFlightNumber.text!)")
             mail.setPreferredSendingEmailAddress("Kenneth.Petschauer@jetblue.com")
             
             present(mail, animated: true)
