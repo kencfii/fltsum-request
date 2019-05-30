@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 //var selectedFlightNumber : String = ""
-
+   // var jbEmail = "test"
 class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate {
     
     var subjectField : String = ""
@@ -38,11 +38,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         pickedRequest.delegate = self
         pickedRequest.dataSource = self
         enteredFlightNumber.delegate = self
+        
+        //below is for using the userpreferences from the settings
+        UserDefaults.standard.register(defaults: [String : Any]())
+        //let userDefaults = UserDefaults.standard
+        //var jbEmail = userDefaults.string(forKey: "JBemail_preference")
     }
     
+    
     @IBOutlet weak var enteredFlightNumber: UITextField!
-    
-    
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         
@@ -51,19 +55,19 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         
         if selectedRequest == 0 {
             subjectField = "Fltsum "
-            print (subjectField)
+            //print (subjectField)
         } else if selectedRequest == 1{
             subjectField = "Crew "
-            print (subjectField)
+            //print (subjectField)
         } else if selectedRequest == 2 {
             subjectField = "EDCT "
-            print (subjectField)
+            //print (subjectField)
         } else if selectedRequest == 3 {
             subjectField = "Loads "
-            print (subjectField)
+            //print (subjectField)
         } else if selectedRequest == 4 {
             subjectField = "Times "
-            print (subjectField)
+            //print (subjectField)
         }
     
         // selectedFlightNumber = enteredFlightNumber.text!
@@ -71,11 +75,15 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         //print ("now we just have to send mail")
         //print (selectedFlightNumber)
         //print (subjectField)
+        //print (jbEmail!)
         
         sendEmail()
     }
-    
+  
     func sendEmail() {
+        
+        let userDefaults = UserDefaults.standard
+        let jbEmail = userDefaults.string(forKey: "JBemail_preference")!
         
         //print (selectedFlightNumber)
         if MFMailComposeViewController.canSendMail() {
@@ -83,7 +91,8 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
             mail.mailComposeDelegate = self
             mail.setToRecipients(["areq@jetblue.com"])
             mail.setSubject("\(subjectField)\(enteredFlightNumber.text!)")
-            mail.setPreferredSendingEmailAddress("Kenneth.Petschauer@jetblue.com")
+        //mail.setPreferredSendingEmailAddress("Kenneth.Petschauer@jetblue.com")
+            mail.setPreferredSendingEmailAddress(jbEmail)
             
             present(mail, animated: true)
             
