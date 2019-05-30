@@ -44,9 +44,9 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6c-SJ-owE">
-                                <rect key="frame" x="164" y="542" width="61" height="51"/>
+                                <rect key="frame" x="177" y="587" width="61" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="letter I for info"/>
+                                <state key="normal" image="i info for app-xprnt"/>
                                 <connections>
                                     <action selector="helpButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="drH-qY-P49"/>
                                 </connections>
@@ -67,6 +67,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="letter I for info" width="1024" height="1024"/>
+        <image name="i info for app-xprnt" width="1024" height="1024"/>
     </resources>
 </document>
