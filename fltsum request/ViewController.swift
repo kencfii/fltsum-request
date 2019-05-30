@@ -106,7 +106,22 @@ class ViewController: UIViewController, MFMailComposeViewControllerDelegate, UIP
         controller.dismiss(animated: true, completion: nil)
         }
     
+    
+    func createAlert (title:String, message:String){
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in alert.dismiss(animated: true, completion: nil)}))
+        
+        self.present(alert, animated: true, completion: nil)
     }
+    
+
+    @IBAction func helpButtonPressed(_ sender: UIButton) {
+        createAlert(title: "Help", message: "Be sure to enter your JB email address in the SETTINGS of your iPhone")
+    }
+    
+}
 
 
 
